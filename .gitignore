@@ -128,4 +128,8 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
+
+venv
+test.py
+test.ipynb
 frontend/Home_.html
