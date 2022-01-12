@@ -20,6 +20,18 @@
   clip: rect(0, 0, 0, 0);
   border: 0; }
 
+
+  .my-header{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+
+.my-navigation{
+  margin-left:auto;
+  margin-right:0;
+}
+
 .fr-view img.fr-rounded, .fr-view .fr-img-caption.fr-rounded img {
   border-radius: 10px;
   -moz-border-radius: 10px;
