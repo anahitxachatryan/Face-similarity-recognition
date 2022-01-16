@@ -6,7 +6,7 @@
     <meta name="keywords" content="1000+ customer using Our application., Quick &amp;amp; Easy Process, We believe inCustomer Satisfaction, Our Features &amp;amp; Services., Check our latest blog post for more update., Check our latest blog post for more update., About Us, Download it now.">
     <meta name="description" content="">
     <meta name="page_type" content="np-template-header-footer-from-plugin">
-    <title>{% block title %}Home{% endblock %}</title>
+    <title>{% block title %}{% endblock %}</title>
     <link rel="stylesheet" href="../static/css/styles.css" media="screen">
 <link rel="stylesheet" href="../static/css/Home.css" media="screen">
     <script class="u-script" type="text/javascript" src="../static/js/jquery-1.9.1.min.js" defer=""></script>
@@ -27,6 +27,17 @@
     <meta property="og:type" content="website">
     <link rel="canonical" href="/">
   </head>
+    <link
+    rel="stylesheet"
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+    crossorigin="anonymous"
+  />
+  <link
+    rel="stylesheet"
+    href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    crossorigin="anonymous"
+/>
   <body data-home-page="" data-home-page-title="Home" class="u-body"><header class="u-clearfix u-custom-color-1 u-header u-header" id="sec-84ba"><div class="u-clearfix u-sheet u-sheet-1 my-header">
         <nav class="u-menu u-menu-dropdown u-offcanvas my-navigation">
           <div class="menu-collapse" style="font-size: 1rem; letter-spacing: 0px;">
@@ -55,9 +66,32 @@
           </div>
         </nav>
       </div></header>
-    {%block content%}
+      {% with messages = get_flashed_messages(with_categories=true) %} 
+        {% if messages %} 
+          {% for category, message in messages %} 
+            {% if category =='error' %}
+        <div class="alert alert-danger alter-dismissable fade show" role="alert">
+          {{ message }}
+          <button type="button" class="close" data-dismiss="alert">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        {% else %}
+        <div class="alert alert-success alter-dismissable fade show" role="alert">
+          {{ message }}
+          <button type="button" class="close" data-dismiss="alert">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+            {% endif %} 
+          {% endfor %} 
+        {% endif %}
+      {% endwith %}
+      <div class = "conteiner">
+        {%block content%}
+        {% endblock %}
+      </div>
 
-    {% endblock %}
     <section class="u-clearfix u-white u-section-2" id="carousel_97d2">
       <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
         <div class="u-clearfix u-expanded-width u-layout-wrap u-layout-wrap-1">
