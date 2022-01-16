@@ -6,6 +6,6 @@ views =  Blueprint('views', __name__)
 def home():
     return render_template('home.html')
 
-@views.route('/fr')
-def face_recognition():
-    return '<p> Face rec</p>'
+@views.route('/uploadImg')
+def uploadImg():
+    return render_template('uploadImg.html')
