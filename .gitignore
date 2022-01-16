@@ -132,4 +132,4 @@ dmypy.json
 venv
 test.py
 test.ipynb
-website/database.db
+.website/database.db
