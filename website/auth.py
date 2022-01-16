@@ -24,9 +24,7 @@ def login():
                 flash("Password is not correct.", category='error')
         else:
             flash("Email does not exist.", category='error')
-                
-        
-    
+            
     return render_template('login.html')
 
 
@@ -61,8 +59,8 @@ def sign_up():
             new_user = User(email = email, firstName = firstName, password = password_hashed)
             db.session.add(new_user)
             db.session.commit()
-            login_user(user, remember=True)          
+            login_user(new_user, remember=True)          
             flash("Account is created successfully.",category="success")
             return redirect(url_for('views.home'))
     
-    return render_template('sign-up.html')
+    return render_template('sign-up.html', user=current_user)
