@@ -1,27 +1,22 @@
 {% extends "index.html" %} {% block title %} Login {% endblock %}
 {% block content %}
-<form method="POST">
-    <div class="form-group">
-      <label for="email">Email Address</label>
-      <input
-        type="email"
-        class="form-control"
-        id="email"
-        name="email"
-        placeholder="Enter email"
-      />
+  <div class="wrapper fadeInDown">
+    <div id="formContent">
+      <!-- Tabs Titles -->
+      <h2 class="active"> Log In </h2>
+
+      <!-- Login Form -->
+      <form method = 'POST'>
+        <input type="text" id="login" class="fadeIn second" name="email" placeholder="email">
+        <input type="password" id="password" class="fadeIn third" name="password" placeholder="password">
+        <input type="submit" class="fadeIn fourth" value="Log In">
+      </form>
+
+      <!-- Remind Passowrd -->
+      <div id="formFooter">
+        <a class="underlineHover" href="#">Forgot Password?</a>
+      </div>
+
     </div>
-    <div class="form-group">
-      <label for="password">Password</label>
-      <input
-        type="password"
-        class="form-control"
-        id="password"
-        name="password"
-        placeholder="Enter password"
-      />
-    </div>
-    <br />
-    <button type="submit" class="btn btn-primary">Login</button>
-  </form>
+  </div>
   {% endblock %}
