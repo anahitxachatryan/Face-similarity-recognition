@@ -50,10 +50,20 @@
           </div>
           <div class="u-custom-menu u-nav-container">
             <ul class="u-nav u-unstyled u-nav-1">
+{% if user.is_authenticated %}
+
 <li class="u-nav-item"><a href='/' class="u-button-style u-nav-link u-text-hover-white" style="padding: 10px 29px 10px 28px;">Home</a>
-</li><li class="u-nav-item"><a href='/login' class="u-button-style u-nav-link u-text-hover-white" style="padding: 10px 29px 10px 28px;">Login</a>
+</li>
+<li class="u-nav-item"><a href='/logout' class="u-button-style u-nav-link u-text-hover-white" style="padding: 10px 29px 10px 28px;">Logout</a>
+</li>
+{% else %}
+<li class="u-nav-item"><a href='/' class="u-button-style u-nav-link u-text-hover-white" style="padding: 10px 29px 10px 28px;">Home</a>
+</li>
+<li class="u-nav-item"><a href='/login' class="u-button-style u-nav-link u-text-hover-white" style="padding: 10px 29px 10px 28px;">Login</a>
 </li><li class="u-nav-item"><a href='/signup' class="u-button-style u-nav-link u-text-hover-white" style="padding: 10px 29px 10px 28px;">Sign Up</a>
-</li></ul>
+</li>
+{% endif %}
+</ul>
           </div>
           <div class="u-custom-menu u-nav-container-collapse">
             <div class="u-black u-container-style u-inner-container-layout u-opacity u-opacity-95 u-sidenav">

@@ -3,7 +3,6 @@
  * License https://froala.com/wysiwyg-editor/terms/
  * Copyright 2014-2021 Froala Labs
  */
-
 .fr-clearfix::after {
   clear: both;
   display: block;
@@ -35781,9 +35780,6 @@ a.u-link.u-text-hover-grey-90:hover {
 
 /* BASIC */
 
-html {
-  background-color: #56baed;
-}
 
 body {
   font-family: "Poppins", sans-serif;
