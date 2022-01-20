@@ -1,12 +1,33 @@
 
+<script class="u-script" type="text/javascript" src="../static/js/upload.js" defer=""></script>
 {% extends "index.html" %} {% block title %}Upload Image{% endblock %} {% block
     content %}
 
-<form method="post" enctype="multipart/form-data">
-  Select image to upload:
-  <input type="file" name="img1" id="img1">\
-  <input type="file" name="img2" id="img2">
+<form method="post" enctype="multipart/form-data" class="upload-form">
+  <p>Select image to upload:</p>
+  <div>
+    <label class="custom-file-upload">
+      <input type="file" name="img1" id="img1" onchange="readURL(this);"/>
+      <i class="fa fa-cloud-upload"></i>  Upload
+  </label>
+  
+  <label class="custom-file-upload">
+    <input type="file" name="img1" id="img1" onchange="readURL2(this);"/>
+    <i class="fa fa-cloud-upload"></i>  Upload
+  </label>
+  
+  </div>
   <input type="submit" value="Compare images" name="submit">
 </form>
+<div>
+  <div class="row images-row">
+    <div class="column">
+      <img id="img_1" src="../static/images/img-default-upload1.jpeg" alt="first-img" style="width:100%"/>
+    </div>
+    <div class="column">
+      <img id="img_2" src="../static/images/img-default-upload2.jpeg" alt="first-img" style="width:100%"/>
+    </div>
+  </div>
+</div>
 {% endblock %}
 

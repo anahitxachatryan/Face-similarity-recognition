@@ -11,4 +11,4 @@ def home():
 @views.route('/uploadImg')
 @login_required
 def uploadImg():
-    return render_template('uploadImg.html')
+    return render_template('uploadImg.html', user = current_user)
