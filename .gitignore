@@ -133,4 +133,7 @@ venv
 test.py
 test.ipynb
 .website/database.db
-
+Data_process/test_model_imagess
+website/static/.DS_Store
+.DS_Store
+website/.DS_Store
