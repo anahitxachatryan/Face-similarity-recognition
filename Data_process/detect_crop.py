@@ -53,8 +53,17 @@ def create_prcessing_dirs(path):
         for i in files:
             os.mkdir(f"{path}/processed/{i}")
         print("Directories are created")
+        
+        
+        
+def create_labels(path):
+    files = list_files(path)
+    for i in files:
+        with open(f'{path}/{i}/label', 'w') as f:
+            f.write('1')
+            f.close()
 
-def main():
+def find_crop_faces():
     path = "needToProcess"
     dirs = list_files(path)
     create_prcessing_dirs(path)
@@ -67,5 +76,9 @@ def main():
 
 
 
+def createDiffPairs():
+    
 
-main()
+
+# find_crop_faces()
+# create_labels("processed")
