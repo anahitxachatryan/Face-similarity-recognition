@@ -63,8 +63,8 @@ def create_labels(path):
             f.write('1')
             f.close()
 
-def find_crop_faces():
-    path = "needToProcess"
+def find_crop_faces(path):
+    
     dirs = list_files(path)
     create_prcessing_dirs(path)
     for i in dirs:
@@ -76,9 +76,13 @@ def find_crop_faces():
 
 
 
-def createDiffPairs():
     
 
 
-# find_crop_faces()
+# find_crop_faces('needToProcess')
 # create_labels("processed")
+# list_my =(list_files("needToProcess"))
+# for i in list_my:
+#     aaa = (list_files(f'needToProcess/{i}'))
+#     if '.ipynb_checkpoints' in aaa:
+#         print(i)
