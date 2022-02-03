@@ -5,6 +5,7 @@
 
 <form method="post" enctype="multipart/form-data" class="upload-form">
   <p>Select image to upload:</p>
+  <h5>Please upload Images where the faces are clearly seen</h5>
   <div>
     <label class="custom-file-upload">
       <input type="file" name="img1" id="img1" onchange="readURL(this);"/>
@@ -17,7 +18,7 @@
   </label>
   
   </div>
-  <input type="submit" value="Compare images" name="submit" onclick="handleDownload(event);">
+  <input type="submit" value="Compare images" name="submit">
 </form>
 <div>
   <div class="row images-row">
