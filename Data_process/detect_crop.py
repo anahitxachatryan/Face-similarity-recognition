@@ -3,41 +3,40 @@ import cv2
 import numpy as np
 import matplotlib.pyplot as plt
 from PIL import Image
-
+from flask import flash
+import shutil
 
 def detectFaceAndCrop(image_name,save_dir):
   # Load in color image for face detection
-  image = cv2.imread(image_name)
+    image = cv2.imread(image_name)
 
-  # Convert the image to RGB colorspace
-  image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
+    # Convert the image to RGB colorspace
+    image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
 
-  # Make a copy of the original image to draw face detections on
-  image_copy = np.copy(image)
+    # Make a copy of the original image to draw face detections on
+    image_copy = np.copy(image)
 
-  # Convert the image to gray 
-  gray_image = cv2.cvtColor(image, cv2.COLOR_RGB2GRAY)
-  face_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_alt2.xml')
+    # Convert the image to gray 
+    gray_image = cv2.cvtColor(image, cv2.COLOR_RGB2GRAY)
+    face_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_alt2.xml')
+
+    # Detect faces in the image using pre-trained face dectector
+    faces = face_cascade.detectMultiScale(gray_image, 1.25, 6)
+
+    # Print number of faces found
     
-  # Detect faces in the image using pre-trained face dectector
-  faces = face_cascade.detectMultiScale(gray_image, 1.25, 6)
+        
+    if (len(faces) > 0):
+    # Get the bounding box for each detected face
+        for f in faces:
+            x, y, w, h = [ v for v in f ]
+            cv2.rectangle(image_copy, (x,y), (x+w, y+h), (255,0,0), 3)
+            # Define the region of interest in the image  
+            face_crop = gray_image[y:y+h, x:x+w] 
 
-  # Print number of faces found
-  if(len(faces) == 0):
-    print(f'{image_name}')
-    print('Number of faces detected:', len(faces))
-
-  # Get the bounding box for each detected face
-  for f in faces:
-      x, y, w, h = [ v for v in f ]
-      cv2.rectangle(image_copy, (x,y), (x+w, y+h), (255,0,0), 3)
-      # Define the region of interest in the image  
-      face_crop = gray_image[y:y+h, x:x+w]
-
-
-  im = Image.fromarray(face_crop)
-  im.save(save_dir)
-
+            im = Image.fromarray(face_crop)
+            im.save(save_dir)
+    return len(faces)
 def list_files(path):
     dir_list = os.listdir(path)
     if '.DS_Store' in dir_list:
@@ -64,7 +63,7 @@ def create_labels(path):
             f.close()
 
 def find_crop_faces(path):
-    
+    count = 0
     dirs = list_files(path)
     create_prcessing_dirs(path)
     for i in dirs:
@@ -72,7 +71,21 @@ def find_crop_faces(path):
             continue
         images = list_files(f'{path}/{i}')
         for j in images:
-            detectFaceAndCrop(f'{path}/{i}/{j}',f'{path}/processed/{i}/{j}')
+            
+            return_code = detectFaceAndCrop(f'{path}/{i}/{j}',f'{path}/processed/{i}/{j}')
+            count +=1
+            if return_code == 0:
+                break
+            
+    return return_code,count
+def delete_all_files(path):
+    files_in_notProcessed = list_files(path)
+    if(len(files_in_notProcessed)>=1):
+        for f in files_in_notProcessed:         
+             os.remove(f'{path}/{f}')
+def if_exists_detele(path):
+    if os.path.exists(path):        
+            shutil.rmtree(path)
 
 
 
