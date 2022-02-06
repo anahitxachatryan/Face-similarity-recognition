@@ -57,4 +57,4 @@ def see_result():
     result_distance = runModel('website/static/imgs_for_model/notProcessed/processed','ML/model.pth')
     
     return render_template('faceRecognition.html', user = current_user,img1=img1, img2=img2,
-    result_distance=int(result_distance))
+    result_distance=result_distance)
