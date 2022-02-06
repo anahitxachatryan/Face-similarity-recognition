@@ -1,7 +1,9 @@
-from flask import Blueprint,render_template, request, flash
+from flask import Blueprint, redirect,render_template, request, flash, url_for
 from flask_login import  login_required, current_user
 import os 
-from Data_process import detect_crop
+
+from ML.DataProcessing import helpers
+from ML.loadModel import runModel
 
 
 
@@ -22,18 +24,37 @@ def uploadImg():
         file_types = ['.jpeg','.jpg','.png']
         name, extension = os.path.splitext(file1.filename)
         name2, extension2 = os.path.splitext(file2.filename)
-        detect_crop.if_exists_detele('imgs_for_model/processed')
-        detect_crop.delete_all_files('imgs_for_model/notProcessed')
+        helpers.if_exists_detele('website/static/imgs_for_model/notProcessed/processed')
+        helpers.delete_all_files('website/static/imgs_for_model/notProcessed/1')
+        helpers.delete_all_files('website/static/imgs_for_model/notProcessed/2')
         if (extension in file_types) & (extension2 in file_types):           
             
-            file1.save(os.path.join('./imgs_for_model/notProcessed/',file1.filename))
-            file2.save(os.path.join('./imgs_for_model/notProcessed/',file2.filename))
-            return_code,count = detect_crop.find_crop_faces('imgs_for_model')
+            file1.save(os.path.join('website/static/imgs_for_model/notProcessed/1/',file1.filename))
+            file2.save(os.path.join('website/static/imgs_for_model/notProcessed/2/',file2.filename))
+            return_code,count = helpers.find_crop_faces('website/static/imgs_for_model/notProcessed')
             if return_code == 0:
                 flash(f"Face is not detected on image {count}", category='error')
-                detect_crop.delete_all_files('imgs_for_model/notProcessed')
-                detect_crop.if_exists_detele('imgs_for_model/processed')              
+                helpers.delete_all_files('website/static/imgs_for_model/notProcessed/1')
+                helpers.delete_all_files('website/static/imgs_for_model/notProcessed/2')
+                helpers.if_exists_detele('website/static/imgs_for_model/notProcessed/processed') 
+            else:
+                img1 = helpers.list_files('website/static/imgs_for_model/notProcessed/processed/1')
+                img2 = helpers.list_files('website/static/imgs_for_model/notProcessed/processed/2')
+
+                return redirect(url_for('views.see_result',img1 = img1[0],img2=img2[0]))             
             
         else:
             flash("Please upload .jpeg, .jpg or .png files", category='error')
+        
     return render_template('uploadImg.html', user = current_user)
+
+
+@views.route('/face_rec',methods = ['GET','POST'])
+@login_required
+def see_result():
+    img1 = request.args.get('img1')
+    img2 = request.args.get('img2')
+    result_distance = runModel('website/static/imgs_for_model/notProcessed/processed','ML/model.pth')
+    
+    return render_template('faceRecognition.html', user = current_user,img1=img1, img2=img2,
+    result_distance=int(result_distance))
