@@ -21,7 +21,7 @@ def uploadImg():
     if request.method == 'POST':
         file1 = request.files['img1']
         file2 = request.files['img2']
-        file_types = ['.jpeg','.jpg','.png']
+        file_types = ['.jpeg','.jpg','.png', '.pgm']
         name, extension = os.path.splitext(file1.filename)
         name2, extension2 = os.path.splitext(file2.filename)
         helpers.if_exists_detele('website/static/imgs_for_model/notProcessed/processed')
