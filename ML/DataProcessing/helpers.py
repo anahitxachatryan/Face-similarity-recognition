@@ -3,12 +3,13 @@ import cv2
 import shutil
 import face_recognition as face_rec
 
+
 def detectFaceAndCrop(image_name,save_dir):
 
     img = face_rec.load_image_file(image_name)
     img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
     faceLocation = face_rec.face_locations(img)[0]
-    encode_img= face_rec.face_encodings(img)[0]
+    encode_img = face_rec.face_encodings(img)[0]
     top_left_x = faceLocation[3]
     top_left_y = faceLocation[0]
     bot_right_x = faceLocation[1]
@@ -16,6 +17,7 @@ def detectFaceAndCrop(image_name,save_dir):
     img = img[top_left_y:bot_right_y, top_left_x:bot_right_x]
     cv2.imwrite(save_dir, img)
     return len(face_rec.face_locations(img)), encode_img
+
 
 def calculate_results(encodedImg1, encodedImg2):
 
@@ -30,12 +32,12 @@ def list_files(path):
 
 def create_prcessing_dirs(path):
     files = list_files(path)
-    if os.path.exists(f"{path}/processed"):
-        print("processing path exists!")
+    if os.path.exists(f'{path}/processed'):
+        print('processing path exists!')
     else:
         os.mkdir(f"{path}/processed")
         for i in files:
-            os.mkdir(f"{path}/processed/{i}")
+            os.mkdir(f'{path}/processed/{i}')
         print("Directories are created")
 
 
@@ -49,7 +51,9 @@ def find_crop_faces(path):
             continue
         images = list_files(f'{path}/{i}')
         for j in images:
-            return_code, encodedImg = detectFaceAndCrop(f'{path}/{i}/{j}',f'{path}/processed/{i}/{j}')
+            return_code, encodedImg = detectFaceAndCrop(
+                                      f'{path}/{i}/{j}',
+                                      f'{path}/processed/{i}/{j}')
 
 
             count +=1
@@ -63,7 +67,7 @@ def find_crop_faces(path):
 
 def delete_all_files(path):
     files_in_notProcessed = list_files(path)
-    if(len(files_in_notProcessed)>=1):
+    if(len(files_in_notProcessed) >= 1):
         for f in files_in_notProcessed:
              os.remove(f'{path}/{f}')
 

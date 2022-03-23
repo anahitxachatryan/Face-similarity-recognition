@@ -31,10 +31,10 @@ def uploadImg():
 
             file1.save(os.path.join('website/static/imgs_for_model/notProcessed/1/',file1.filename))
             file2.save(os.path.join('website/static/imgs_for_model/notProcessed/2/',file2.filename))
-            return_code,count, encodings = helpers.find_crop_faces('website/static/imgs_for_model/notProcessed')
+            return_code, count, encodings = helpers.find_crop_faces('website/static/imgs_for_model/notProcessed')
 
             if return_code == 0:
-                flash(f"Face is not detected on image {count}", category='error')
+                flash(f'Face is not detected on image {count}', category='error')
                 helpers.delete_all_files('website/static/imgs_for_model/notProcessed/1')
                 helpers.delete_all_files('website/static/imgs_for_model/notProcessed/2')
                 helpers.if_exists_detele('website/static/imgs_for_model/notProcessed/processed')
@@ -44,10 +44,12 @@ def uploadImg():
                 results = helpers.calculate_results(encodings[0],encodings[1])
 
 
-                return redirect(url_for('views.see_result',img1 = img1[0],img2=img2[0], results = results))
+                return redirect(url_for('views.see_result',
+                img1 = img1[0], img2 = img2[0], results = results))
 
         else:
-            flash("Please upload .jpeg, .jpg or .png files", category='error')
+            flash('Please upload .jpeg, .jpg or .png files',
+            category = 'error')
 
     return render_template('uploadImg.html', user = current_user)
 
@@ -59,5 +61,8 @@ def see_result():
     img2 = request.args.get('img2')
     results = request.args.get('results')
 
-    return render_template('faceRecognition.html', user = current_user,img1=img1, img2=img2,
-    result_distance=results)
+    return render_template('faceRecognition.html',
+                            user = current_user,
+                            img1 = img1,
+                            img2 = img2,
+                            result_distance = results)
