@@ -8,7 +8,7 @@ You can:
 
 ## Example
 
-![Architecture](./website/static/images/example.png)
+![Example](./website/static/images/example.png)
 
 ## Clone this repository
 
