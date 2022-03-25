@@ -9,7 +9,7 @@ You can:
 ## Example 1
 <img src="website/static/images/DEMO.gif"/>
 
-![Example](website/static/images/example.png)
+![Example](website/static/images/example1.png)
 
 
 ## Clone this repository
