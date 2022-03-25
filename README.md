@@ -7,7 +7,7 @@ You can:
 
 
 ## Example
-![DEMO GIF](./website/static/images/DEMO.gif)
+![DEMO GIF](website/static/images/DEMO.gif)
 
 ## Clone this repository
 
