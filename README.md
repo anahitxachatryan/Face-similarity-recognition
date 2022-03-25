@@ -7,7 +7,7 @@ You can:
 
 
 ## Example 1
-![DEMO GIF](website/static/images/DEMO.gif = 250x250)
+![DEMO GIF]<img src="website/static/images/DEMO.gif" width="50%" height="50%"/>
 
 ## Example 2
 ![Example 2](website/static/images/example.png)
