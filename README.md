@@ -8,7 +8,6 @@ You can:
 
 ## Example
 ![DEMO GIF](./website/static/images/DEMO.gif)
-![Example](./website/static/images/example.png)
 
 ## Clone this repository
 
