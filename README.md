@@ -6,8 +6,12 @@ You can:
 * Compare 2 images and see if they belong to the same person
 
 
-## Example
+## Example 1
 ![DEMO GIF](website/static/images/DEMO.gif)
+
+## Example 2
+![Example 2](website/static/images/example.png)
+
 
 ## Clone this repository
 
