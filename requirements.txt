@@ -4,6 +4,5 @@ Flask_Login==0.5.0
 Flask_SQLAlchemy==2.5.1
 opencv_python==4.5.5.62
 scikit_image==0.19.1
-skimage==0.0
 SQLAlchemy==1.4.29
 Werkzeug==2.0.2
