@@ -7,9 +7,9 @@ You can:
 
 
 ## DEMO
-<img src="website/static/images/DEMO.gif"/>
+<img src="website/static/images/DEMO.gif", width=500/>
 ## RESULT - Uploading Henrikh MKhitaryan's 2 different photos
-![Example](website/static/images/example1.png)
+<img src="website/static/images/example1.png"/>
 
 
 ## Clone this repository
