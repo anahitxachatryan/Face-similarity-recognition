@@ -6,9 +6,9 @@ You can:
 * Compare 2 images and see if they belong to the same person
 
 
-## Example 1
+## DEMO
 <img src="website/static/images/DEMO.gif"/>
-
+## RESULT - Uploading Henrikh MKhitaryan's 2 different photos
 ![Example](website/static/images/example1.png)
 
 
