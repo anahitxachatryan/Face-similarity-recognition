@@ -7,7 +7,7 @@ You can:
 
 
 ## DEMO
-<img src="website/static/images/DEMO.gif", width=500/>
+<img src="website/static/images/DEMO.gif"/>
 ## RESULT - Uploading Henrikh MKhitaryan's 2 different photos
 <img src="website/static/images/example1.png"/>
 
