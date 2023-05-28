@@ -7,9 +7,14 @@ You can:
 
 
 ## DEMO
-<img src="website/static/images/DEMO.gif"/>
+<p align="center">
+  <img src="website/static/images/DEMO.gif">
+</p>
+
 ## RESULT - Uploading Henrikh MKhitaryan's 2 different photos
-<img src="website/static/images/example1.png"/>
+<p align="center">
+  <img src="website/static/images/example1.png">
+</p>
 
 
 ## Clone this repository
