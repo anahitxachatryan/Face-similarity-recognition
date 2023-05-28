@@ -14,7 +14,7 @@ You can:
 
 ## RESULT - Uploading Henrikh MKhitaryan's 2 different photos
 <p align="center">
-  <img src="website/static/images/example1.png" width="700">
+  <img src="website/static/images/example1.png">
 </p>
 
 
