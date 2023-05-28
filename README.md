@@ -8,7 +8,8 @@ You can:
 
 ## DEMO
 <p align="center">
-  <img src="website/static/images/DEMO.gif" width="500">>
+  <img src="website/static/images/DEMO.gif" width="700">
+  
 </p>
 
 ## RESULT - Uploading Henrikh MKhitaryan's 2 different photos
